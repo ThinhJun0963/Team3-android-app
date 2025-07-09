@@ -41,7 +41,19 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+
+    // Thêm các thư viện mới
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp.logging)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.lifecycle.livedata)
+    annotationProcessor(libs.lifecycle.compiler) // Dùng annotationProcessor cho Java
+    implementation(libs.preference)
+    implementation(libs.lottie) // Thêm Lottie cho animation
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }
