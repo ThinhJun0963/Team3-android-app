@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-
+    <!-- Theme customizations for API 31 and above -->
     <style name="Theme.PRM392_Group_Project" parent="Base.Theme.PRM392_Group_Project">
-        <!-- Transparent system bars for edge-to-edge. -->
+        <!-- Transparent system bars for edge-to-edge -->
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

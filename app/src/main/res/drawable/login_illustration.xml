@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="200dp"
+    android:viewportWidth="240"
+    android:viewportHeight="200">
+    <!-- This is a placeholder. You should replace this with a more complex and visually appealing illustration. -->
+    <!-- Example: A simple abstract shape or a stylized human figure related to login. -->
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M0,0h240v150c-50,50 -100,50 -150,0c-50,-50 -90,-50 -90,0z"/>
+    <path
+        android:fillColor="?attr/colorPrimary"
+        android:pathData="M120,100c-27.61,0 -50,-22.39 -50,-50s22.39,-50 50,-50 50,22.39 50,50 -22.39,50 -50,50z"/>
+    <path
+        android:fillColor="?attr/colorSecondary"
+        android:pathData="M120,120c-33.14,0 -60,16.72 -60,37.5v12.5h120v-12.5c0,-20.78 -26.86,-37.5 -60,-37.5z"/>
+</vector>
