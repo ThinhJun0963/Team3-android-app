@@ -2,6 +2,9 @@
 package com.example.prm392_group_project.api;
 
 import android.content.Context;
+
+import com.example.prm392_group_project.activities.AdminOrderManagementActivity;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -44,5 +47,11 @@ public class RetrofitClient {
     }
     public static AdminCategoryApi getAdminCategoryApi(Context context) {
         return getClient(context).create(AdminCategoryApi.class);
+    }
+    public static AdminUserApi getAdminUserApi(Context context) {
+        return getClient(context).create(AdminUserApi.class);
+    }
+    public static AdminOrderApi getAdminOrderApi(AdminOrderManagementActivity context) {
+        return getClient(context).create(AdminOrderApi.class);
     }
 }
