@@ -41,40 +41,20 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:id="@+id/tvPrice"
+                android:id="@+id/tvQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Giá: 100.000 VND"
+                android:text="Số lượng: 1"
                 android:textColor="#444444"
                 android:layout_marginTop="4dp" />
 
             <TextView
-                android:id="@+id/tvStock"
+                android:id="@+id/tvTotalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kho: 10"
+                android:text="Thành tiền: 100.000 VND"
                 android:textColor="#444444"
                 android:layout_marginTop="2dp" />
-
-            <TextView
-                android:id="@+id/tvCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Danh mục: Thời trang"
-                android:textColor="#444444"
-                android:layout_marginTop="2dp" />
-
-            <!-- ✅ Nút thêm vào giỏ -->
-            <Button
-                android:id="@+id/btnAddToCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thêm vào giỏ"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="#4CAF50"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:layout_gravity="start" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
