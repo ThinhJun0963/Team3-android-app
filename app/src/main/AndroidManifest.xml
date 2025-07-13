@@ -47,5 +47,11 @@
             android:exported="false" />
         <activity android:name=".activities.CategoryFormActivity"
             android:exported="false" />
+        <activity android:name=".activities.UserManagementActivity"
+            android:exported="false" />
+        <activity android:name=".activities.UserEditActivity"
+            android:exported="false" />
+        <activity android:name=".activities.AdminOrderManagementActivity"
+            android:exported="false" />
     </application>
 </manifest>

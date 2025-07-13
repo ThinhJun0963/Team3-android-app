@@ -2,50 +2,78 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
-    android:background="?attr/colorSurface">
+    android:padding="16dp"
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:padding="8dp">
 
+        <!-- Header Title -->
         <TextView
             android:id="@+id/tvAdminTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bảng điều khiển Admin"
-            android:textSize="24sp"
+            android:text="Quản Lý Hệ Thống"
+            android:textSize="26sp"
             android:textStyle="bold"
-            android:layout_marginBottom="32dp" />
+            android:textColor="@android:color/black"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp" />
 
+        <!-- Icon image -->
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_admin_dashboard"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="Admin Icon" />
+
+        <!-- Styled Buttons -->
         <Button
             android:id="@+id/btnManageUsers"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quản lý Người dùng"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:text="👤 Quản lý Người dùng" />
 
         <Button
             android:id="@+id/btnManageOrders"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quản lý Đơn hàng"
-            android:layout_marginBottom="16dp"/>
+            android:text="🧾 Quản lý Đơn hàng"
+            android:layout_marginBottom="16dp" />
 
         <Button
             android:id="@+id/btnManageProducts"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quản lý Sản phẩm"
-            android:layout_marginBottom="16dp"/>
+            android:text="📦 Quản lý Sản phẩm"
+            android:layout_marginBottom="16dp" />
 
         <Button
             android:id="@+id/btnManageCategories"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quản lý Danh mục"/>
+            android:text="🗂️ Quản lý Danh mục"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnAdminLogout"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🚪 Đăng xuất"
+            android:textColor="@android:color/holo_red_dark"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_marginTop="12dp" />
 
     </LinearLayout>
 </ScrollView>
