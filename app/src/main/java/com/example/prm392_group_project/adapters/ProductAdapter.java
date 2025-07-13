@@ -3,15 +3,19 @@ package com.example.prm392_group_project.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.prm392_group_project.R;
+import com.example.prm392_group_project.models.CartItemDTO;
 import com.example.prm392_group_project.models.Product;
+import com.example.prm392_group_project.utils.CartManager;
 
 import java.util.List;
 
@@ -28,6 +32,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView imgProduct;
         TextView tvName, tvPrice, tvStock, tvCategory;
+        Button btnAddToCart; // ✅ thêm dòng này
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -36,8 +41,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvStock = itemView.findViewById(R.id.tvStock);
             tvCategory = itemView.findViewById(R.id.tvCategory);
+            btnAddToCart = itemView.findViewById(R.id.btnAddToCart); // ✅ thêm dòng này
         }
     }
+
 
     @NonNull
     @Override
@@ -62,6 +69,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 .placeholder(android.R.drawable.ic_menu_gallery) // ảnh mặc định
                 .error(android.R.drawable.ic_delete)             // ảnh khi lỗi
                 .into(holder.imgProduct);
+        holder.btnAddToCart.setOnClickListener(v -> {
+            // Tạo CartItemDTO từ sản phẩm đang hiển thị
+            CartItemDTO item = new CartItemDTO(
+                    p.getId(),
+                    p.getName(),
+                    1,
+                    p.getPrice().doubleValue() // ✅ ép kiểu
+            );
+
+            // Thêm vào giỏ
+            CartManager.addToCart(item);
+
+            // Thông báo
+            Toast.makeText(v.getContext(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+        });
+
     }
 
     @Override
