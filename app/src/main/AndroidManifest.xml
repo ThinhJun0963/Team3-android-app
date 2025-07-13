@@ -35,5 +35,17 @@
         <activity
             android:name=".activities.UpdateProfileActivity"
             android:exported="false" />
+        <activity android:name=".activities.AdminDashboardActivity"
+            android:exported="false" />
+        <activity android:name=".activities.ProductListActivity"
+            android:exported="false" />
+        <activity android:name=".activities.ProductFormActivity"
+            android:exported="false" />
+        <activity android:name=".activities.ProductManagementActivity"
+            android:exported="false" />
+        <activity android:name=".activities.CategoryManagementActivity"
+            android:exported="false" />
+        <activity android:name=".activities.CategoryFormActivity"
+            android:exported="false" />
     </application>
 </manifest>

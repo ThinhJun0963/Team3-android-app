@@ -52,6 +52,9 @@ dependencies {
     implementation(libs.preference)
     implementation(libs.lottie) // Thêm Lottie cho animation
 
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

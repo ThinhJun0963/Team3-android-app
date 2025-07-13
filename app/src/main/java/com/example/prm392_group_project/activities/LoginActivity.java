@@ -104,13 +104,35 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+    private String extractRoleFromJwt(String token) {
+        try {
+            String[] parts = token.split("\\.");
+            if (parts.length >= 2) {
+                String payloadJson = new String(android.util.Base64.decode(parts[1], android.util.Base64.URL_SAFE));
+                org.json.JSONObject payload = new org.json.JSONObject(payloadJson);
+                return payload.optString("role", null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     private void navigateToMainScreen() {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        String token = tokenManager.getAuthToken();
+        String role = extractRoleFromJwt(token);
+
+        Intent intent;
+        if ("ADMIN".equalsIgnoreCase(role)) {
+            intent = new Intent(LoginActivity.this, AdminDashboardActivity.class);
+        } else {
+            intent = new Intent(LoginActivity.this, MainActivity.class);
+        }
+
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();
     }
+
 
     private void showSnackbar(String message) {
         Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show();

@@ -39,4 +39,10 @@ public class RetrofitClient {
     public static ProductApi getProductApi(Context context) {
         return getClient(context).create(ProductApi.class);
     }
+    public static AdminProductApi getAdminProductApi(Context context) {
+        return getClient(context).create(AdminProductApi.class);
+    }
+    public static AdminCategoryApi getAdminCategoryApi(Context context) {
+        return getClient(context).create(AdminCategoryApi.class);
+    }
 }

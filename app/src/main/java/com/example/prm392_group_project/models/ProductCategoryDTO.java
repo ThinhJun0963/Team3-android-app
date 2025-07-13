@@ -4,7 +4,13 @@ public class ProductCategoryDTO {
     private Long id;
     private String name;
 
-    // Getters & Setters
+    // Constructor có id (để tạo nhanh khi submit)
+    public ProductCategoryDTO(Long id) {
+        this.id = id;
+    }
+
+    // Constructor mặc định (cần cho Retrofit, JSON, v.v.)
+    public ProductCategoryDTO() {}
 
     public Long getId() {
         return id;
@@ -22,3 +28,4 @@ public class ProductCategoryDTO {
         this.name = name;
     }
 }
+
