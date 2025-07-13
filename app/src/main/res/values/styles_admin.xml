@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AdminButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:backgroundTintMode">src_in</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:background">@drawable/rounded_button</item>
+    </style>
+</resources>
