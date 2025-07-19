@@ -1,9 +1,11 @@
 package com.example.prm392_group_project.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
@@ -34,6 +36,7 @@ public class ProductListActivity extends AppCompatActivity {
     private RecyclerView recyclerProducts;
     private List<ProductCategoryDTO> categoryList = new ArrayList<>();
     private ProductAdapter productAdapter;
+    private Button btnViewCart;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +48,12 @@ public class ProductListActivity extends AppCompatActivity {
         recyclerProducts.setLayoutManager(new LinearLayoutManager(this));
 
         loadCategories();
+        btnViewCart = findViewById(R.id.btnViewCart);
+        btnViewCart.setOnClickListener(v -> {
+            Intent intent = new Intent(ProductListActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     private void loadCategories() {

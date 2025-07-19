@@ -75,11 +75,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                     p.getId(),
                     p.getName(),
                     1,
-                    p.getPrice().doubleValue() // ✅ ép kiểu
+                    p.getPrice().doubleValue(),
+                    p.getImageUrl()
+
             );
 
             // Thêm vào giỏ
-            CartManager.addToCart(item);
+            CartManager.getInstance().addToCart(item);
 
             // Thông báo
             Toast.makeText(v.getContext(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();

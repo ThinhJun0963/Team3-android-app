@@ -5,9 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartManager {
-    private static final List<CartItemDTO> cartItems = new ArrayList<>();
 
-    public static void addToCart(CartItemDTO item) {
+    private static CartManager instance;
+    private final List<CartItemDTO> cartItems = new ArrayList<>();
+
+    private CartManager() {}
+
+    public static synchronized CartManager getInstance() {
+        if (instance == null) {
+            instance = new CartManager();
+        }
+        return instance;
+    }
+
+    public void addToCart(CartItemDTO item) {
         for (CartItemDTO existing : cartItems) {
             if (existing.getProductId().equals(item.getProductId())) {
                 existing.setQuantity(existing.getQuantity() + item.getQuantity());
@@ -17,15 +28,37 @@ public class CartManager {
         cartItems.add(item);
     }
 
-    public static void removeFromCart(Long productId) {
+    public void removeFromCart(Long productId) {
         cartItems.removeIf(item -> item.getProductId().equals(productId));
     }
 
-    public static List<CartItemDTO> getCartItems() {
+    public void updateQuantity(Long productId, int newQuantity) {
+        for (CartItemDTO item : cartItems) {
+            if (item.getProductId().equals(productId)) {
+                if (newQuantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    item.setQuantity(newQuantity);
+                }
+                break;
+            }
+        }
+    }
+
+    public int getQuantity(Long productId) {
+        for (CartItemDTO item : cartItems) {
+            if (item.getProductId().equals(productId)) {
+                return item.getQuantity();
+            }
+        }
+        return 0;
+    }
+
+    public List<CartItemDTO> getItems() {
         return new ArrayList<>(cartItems);
     }
 
-    public static double getTotalPrice() {
+    public double getTotalPrice() {
         double total = 0;
         for (CartItemDTO item : cartItems) {
             total += item.getTotalPrice();
@@ -33,7 +66,11 @@ public class CartManager {
         return total;
     }
 
-    public static void clearCart() {
+    public void clearCart() {
         cartItems.clear();
+    }
+
+    public boolean isEmpty() {
+        return cartItems.isEmpty();
     }
 }

@@ -54,4 +54,8 @@ public class RetrofitClient {
     public static AdminOrderApi getAdminOrderApi(AdminOrderManagementActivity context) {
         return getClient(context).create(AdminOrderApi.class);
     }
+    public static OrderApi getOrderApi(Context context) {
+        return getClient(context).create(OrderApi.class);
+    }
+
 }

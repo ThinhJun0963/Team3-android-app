@@ -1,5 +1,6 @@
 package com.example.prm392_group_project.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,8 +33,11 @@ public class CartActivity extends AppCompatActivity {
         tvTotalPrice = findViewById(R.id.tvTotalPrice);
         btnCheckout = findViewById(R.id.btnCheckout);
 
-        cartItems = CartManager.getCartItems();
-        cartAdapter = new CartAdapter(cartItems);
+        cartItems = CartManager.getInstance().getItems();
+
+        // ✅ Truyền context, danh sách ban đầu và callback
+        cartAdapter = new CartAdapter(this, cartItems, this::onCartUpdated);
+
         recyclerCart.setLayoutManager(new LinearLayoutManager(this));
         recyclerCart.setAdapter(cartAdapter);
 
@@ -45,16 +49,21 @@ public class CartActivity extends AppCompatActivity {
                 return;
             }
 
-            // TODO: Gửi API POST /orders ở bước sau
-            Toast.makeText(this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
-            CartManager.clearCart();
-            cartAdapter.notifyDataSetChanged();
-            updateTotalPrice();
+            // ✅ Chuyển sang màn hình thanh toán
+            Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
+            startActivity(intent);
         });
     }
 
+    // ✅ Hàm callback khi có sản phẩm bị xoá
+    private void onCartUpdated() {
+        cartItems = CartManager.getInstance().getItems();
+        cartAdapter.updateItems(cartItems); // Cập nhật lại dữ liệu adapter
+        updateTotalPrice(); // Cập nhật lại tổng tiền
+    }
+
     private void updateTotalPrice() {
-        double total = CartManager.getTotalPrice();
+        double total = CartManager.getInstance().getTotalPrice();
         tvTotalPrice.setText("Tổng tiền: " + total + " VND");
     }
 }
