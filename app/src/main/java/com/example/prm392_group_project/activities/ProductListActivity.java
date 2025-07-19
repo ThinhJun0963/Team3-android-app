@@ -45,6 +45,7 @@ public class ProductListActivity extends AppCompatActivity {
         recyclerProducts.setLayoutManager(new LinearLayoutManager(this));
 
         loadCategories();
+
     }
 
     private void loadCategories() {

@@ -15,6 +15,7 @@ import com.example.prm392_group_project.api.RetrofitClient;
 import com.example.prm392_group_project.models.CreateProductRequest;
 import com.example.prm392_group_project.models.Product;
 import com.example.prm392_group_project.models.ProductCategoryDTO;
+import com.example.prm392_group_project.models.UpdateProductRequest;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -53,26 +54,35 @@ public class ProductFormActivity extends AppCompatActivity {
 
         btnSave.setOnClickListener(v -> {
             String name = edtName.getText().toString().trim();
-            BigDecimal price = BigDecimal.valueOf(Double.parseDouble(edtPrice.getText().toString().trim()));
-            int stock = Integer.parseInt(edtStock.getText().toString().trim());
+            String priceStr = edtPrice.getText().toString().trim();
+            String stockStr = edtStock.getText().toString().trim();
             String img = edtImage.getText().toString().trim();
             String desc = edtDesc.getText().toString().trim();
+
+            if (name.isEmpty() || priceStr.isEmpty() || stockStr.isEmpty()) {
+                Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            BigDecimal price = BigDecimal.valueOf(Double.parseDouble(priceStr));
+            int stock = Integer.parseInt(stockStr);
             Long categoryId = categories.get(spinnerCategory.getSelectedItemPosition()).getId();
 
             AdminProductApi api = RetrofitClient.getAdminProductApi(this);
 
             if (editingProduct != null) {
-                // Update sản phẩm
-                editingProduct.setName(name);
-                editingProduct.setPrice(price);
-                editingProduct.setStock(stock);
-                editingProduct.setImageUrl(img);
-                editingProduct.setDescription(desc);
-                editingProduct.getCategory().setId(categoryId);
+                // ✅ Sử dụng UpdateProductRequest
+                UpdateProductRequest dto = new UpdateProductRequest();
+                dto.setName(name);
+                dto.setPrice(price.doubleValue());
+                dto.setStock(stock);
+                dto.setImageUrl(img);
+                dto.setDescription(desc);
+                dto.setCategoryId(categoryId);
 
-                api.updateProduct(editingProduct.getId(), editingProduct).enqueue(callback("Cập nhật"));
+                api.updateProduct(editingProduct.getId(), dto).enqueue(callback("Cập nhật"));
             } else {
-                // Tạo mới
+                // ✅ Tạo mới vẫn dùng CreateProductRequest
                 CreateProductRequest newProduct = new CreateProductRequest();
                 newProduct.setName(name);
                 newProduct.setPrice(price);

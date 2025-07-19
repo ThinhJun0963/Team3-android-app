@@ -2,6 +2,8 @@ package com.example.prm392_group_project.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -43,6 +45,15 @@ public class ProductManagementActivity extends AppCompatActivity {
         fabAdd = findViewById(R.id.fabAddProduct);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Quay lại AdminDashboard
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(this, AdminDashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        });
+
         fabAdd.setOnClickListener(v -> {
             Intent intent = new Intent(this, ProductFormActivity.class);
             startActivity(intent);
@@ -78,7 +89,7 @@ public class ProductManagementActivity extends AppCompatActivity {
 
     private void onEdit(Product product) {
         Intent intent = new Intent(this, ProductFormActivity.class);
-        intent.putExtra("product_id", product.getId()); // Truyền ID để lấy lại dữ liệu chi tiết
+        intent.putExtra("product_id", product.getId());
         startActivity(intent);
     }
 

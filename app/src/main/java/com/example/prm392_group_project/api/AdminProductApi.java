@@ -2,6 +2,8 @@ package com.example.prm392_group_project.api;
 
 import com.example.prm392_group_project.models.CreateProductRequest;
 import com.example.prm392_group_project.models.Product;
+import com.example.prm392_group_project.models.ProductCategoryDTO;
+import com.example.prm392_group_project.models.UpdateProductRequest;
 
 import java.util.List;
 
@@ -25,8 +27,10 @@ public interface AdminProductApi {
     Call<Product> createProduct(@Body CreateProductRequest dto);
 
     @PUT("/admin/products/{id}")
-    Call<Product> updateProduct(@Path("id") long id, @Body Product request);
+    Call<Product> updateProduct(@Path("id") long id, @Body UpdateProductRequest request); // ✅ Đúng
 
     @DELETE("/admin/products/{id}")
     Call<Void> deleteProduct(@Path("id") long id);
+    @GET("categories")
+    Call<List<ProductCategoryDTO>> getCategories();
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:radius="32dp"
+    android:elevation="6dp"
+    android:clickable="true"
+    android:layout_marginVertical="4dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <TextView
+            android:id="@+id/cardIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="👤"
+            android:textSize="20sp"
+            android:layout_marginEnd="16dp" />
+
+        <TextView
+            android:id="@+id/cardTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quản lý Người dùng"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

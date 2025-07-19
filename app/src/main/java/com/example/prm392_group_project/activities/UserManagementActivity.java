@@ -2,6 +2,7 @@ package com.example.prm392_group_project.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +39,15 @@ public class UserManagementActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerUsers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Quay lại AdminDashboard
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(this, AdminDashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void loadUsers() {
