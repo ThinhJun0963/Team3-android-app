@@ -48,11 +48,6 @@ public class ProductListActivity extends AppCompatActivity {
         recyclerProducts.setLayoutManager(new LinearLayoutManager(this));
 
         loadCategories();
-        btnViewCart = findViewById(R.id.btnViewCart);
-        btnViewCart.setOnClickListener(v -> {
-            Intent intent = new Intent(ProductListActivity.this, CartActivity.class);
-            startActivity(intent);
-        });
 
     }
 

@@ -1,79 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@android:color/white">
+    android:background="#F6F6F6"
+    android:padding="24dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="8dp">
+        android:gravity="center_horizontal">
 
-        <!-- Header Title -->
         <TextView
-            android:id="@+id/tvAdminTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quản Lý Hệ Thống"
-            android:textSize="26sp"
+            android:text="Trang Admin"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp" />
+            android:textColor="#0F1C3F"
+            android:layout_marginBottom="32dp" />
 
-        <!-- Icon image -->
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_admin_dashboard"
-            android:layout_marginBottom="24dp"
-            android:contentDescription="Admin Icon" />
-
-        <!-- Styled Buttons -->
-        <Button
-            android:id="@+id/btnManageUsers"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="👤 Quản lý Người dùng" />
-
-        <Button
-            android:id="@+id/btnManageOrders"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="🧾 Quản lý Đơn hàng"
+        <!-- Quản lý Người dùng -->
+        <include
+            layout="@layout/admin_card_button"
+            android:id="@+id/cardUsers"
+            android:tag="👤|Quản lý Người dùng|#4FC3F7|#0F1C3F"
             android:layout_marginBottom="16dp" />
 
-        <Button
-            android:id="@+id/btnManageProducts"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="📦 Quản lý Sản phẩm"
+        <!-- Quản lý Đơn hàng -->
+        <include
+            layout="@layout/admin_card_button"
+            android:id="@+id/cardOrders"
+            android:tag="📄|Quản lý Đơn hàng|#FF8A65|#0F1C3F"
             android:layout_marginBottom="16dp" />
 
-        <Button
-            android:id="@+id/btnManageCategories"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="🗂️ Quản lý Danh mục"
-            android:layout_marginBottom="24dp" />
+        <!-- Quản lý Sản phẩm -->
+        <include
+            layout="@layout/admin_card_button"
+            android:id="@+id/cardProducts"
+            android:tag="📦|Quản lý Sản phẩm|#FFD54F|#0F1C3F"
+            android:layout_marginBottom="16dp" />
 
-        <Button
-            android:id="@+id/btnAdminLogout"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="🚪 Đăng xuất"
-            android:textColor="@android:color/holo_red_dark"
-            android:backgroundTint="@android:color/transparent"
-            android:layout_marginTop="12dp" />
+        <!-- Quản lý Danh mục -->
+        <include
+            layout="@layout/admin_card_button"
+            android:id="@+id/cardCategories"
+            android:tag="📁|Quản lý Danh mục|#4DB6AC|#0F1C3F"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Đăng xuất -->
+        <include
+            layout="@layout/admin_card_button"
+            android:id="@+id/cardLogout"
+            android:tag="🚪|Đăng xuất|#EF5350|#B71C1C"
+            android:layout_marginTop="8dp" />
 
     </LinearLayout>
 </ScrollView>

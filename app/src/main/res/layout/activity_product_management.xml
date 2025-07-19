@@ -2,15 +2,49 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
 
+    <!-- Toolbar đơn giản -->
+    <LinearLayout
+        android:id="@+id/layoutToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#FF9800"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Back"
+            app:tint="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quản lý sản phẩm"
+            android:textSize="18sp"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="12dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Danh sách sản phẩm -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerAdminProducts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        android:layout_above="@id/fabAddProduct" />
+        android:layout_below="@id/layoutToolbar"
+        android:layout_above="@id/fabAddProduct"
+        android:padding="8dp" />
 
+    <!-- Nút thêm sản phẩm -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddProduct"
         android:layout_width="wrap_content"
@@ -18,6 +52,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
-        android:contentDescription="Add Product"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:contentDescription="Thêm sản phẩm"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:backgroundTint="#FF9800" />
 </RelativeLayout>
