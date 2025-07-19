@@ -17,6 +17,8 @@
         tools:targetApi="31">
         <activity android:name=".activities.CartActivity" />
         <activity android:name=".activities.CheckoutActivity" />
+        <activity android:name=".activities.OrderHistoryActivity" />
+        <activity android:name=".activities.ZaloPayWebViewActivity" />
         <activity
             android:name=".activities.LoginActivity"
             android:exported="true">

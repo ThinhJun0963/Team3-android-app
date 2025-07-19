@@ -57,5 +57,8 @@ public class RetrofitClient {
     public static OrderApi getOrderApi(Context context) {
         return getClient(context).create(OrderApi.class);
     }
+    public static PaymentApi getPaymentApi(Context context) {
+        return getClient(context).create(PaymentApi.class);
+    }
 
 }
