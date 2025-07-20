@@ -70,6 +70,7 @@ public class CheckoutActivity extends AppCompatActivity {
         spinnerPayment.setAdapter(paymentAdapter);
 
         btnPlaceOrder.setOnClickListener(v -> placeOrder());
+        BottomNavHelper.setupBottomNav(this);
     }
 
     private void placeOrder() {

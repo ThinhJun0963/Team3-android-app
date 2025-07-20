@@ -30,6 +30,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
 
         recyclerOrders = findViewById(R.id.recyclerOrders);
         recyclerOrders.setLayoutManager(new LinearLayoutManager(this));
+        BottomNavHelper.setupBottomNav(this);
 
         fetchOrders();
     }

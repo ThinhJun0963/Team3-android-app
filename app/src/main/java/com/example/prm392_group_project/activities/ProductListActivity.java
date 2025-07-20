@@ -46,12 +46,8 @@ public class ProductListActivity extends AppCompatActivity {
         spinnerCategory = findViewById(R.id.spinnerCategory);
         recyclerProducts = findViewById(R.id.recyclerProducts);
         recyclerProducts.setLayoutManager(new LinearLayoutManager(this));
-        btnViewCart = findViewById(R.id.btnViewCart); // gán ID
 
-        btnViewCart.setOnClickListener(v -> {
-            Intent intent = new Intent(ProductListActivity.this, CartActivity.class);
-            startActivity(intent);
-        });
+        BottomNavHelper.setupBottomNav(this);
 
         loadCategories();
 

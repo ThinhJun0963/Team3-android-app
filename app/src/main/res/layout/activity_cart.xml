@@ -37,4 +37,6 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="#4CAF50"
         android:textColor="#FFFFFF" />
+    <include layout="@layout/view_bottom_nav" />
+
 </LinearLayout>

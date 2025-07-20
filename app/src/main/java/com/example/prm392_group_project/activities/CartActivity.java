@@ -52,6 +52,7 @@ public class CartActivity extends AppCompatActivity {
             // ✅ Chuyển sang màn hình thanh toán
             Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
             startActivity(intent);
+            BottomNavHelper.setupBottomNav(this);
         });
     }
 
