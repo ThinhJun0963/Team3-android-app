@@ -1,52 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="4dp"
     android:layout_margin="8dp"
-    android:padding="12dp">
+    android:elevation="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <!-- Mã đơn -->
         <TextView
             android:id="@+id/tvOrderId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Mã đơn: #123"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_marginBottom="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textColor="#000000" />
 
-        <TextView
-            android:id="@+id/tvOrderUser"
-            android:text="User ID"
-            android:textSize="14sp"
+        <!-- Người đặt -->
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp">
 
-        <TextView
-            android:id="@+id/tvOrderStatus"
-            android:text="Trạng thái"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_user"
+                android:tint="#666666"
+                android:layout_marginEnd="4dp" />
 
-        <TextView
-            android:id="@+id/tvOrderPrice"
-            android:text="Tổng tiền"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tvOrderUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Người đặt"
+                android:textSize="14sp"
+                android:textColor="#555555" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvOrderDate"
-            android:text="Ngày tạo"
-            android:textSize="14sp"
+        <!-- Trạng thái -->
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_status"
+                android:tint="#FF9800"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/tvOrderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trạng thái: PENDING"
+                android:textSize="14sp"
+                android:textColor="#FF9800" />
+        </LinearLayout>
+
+        <!-- Tổng tiền -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_money"
+                android:tint="#388E3C"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/tvOrderPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng tiền: 500,000đ"
+                android:textSize="14sp"
+                android:textColor="#388E3C" />
+        </LinearLayout>
+
+        <!-- Ngày tạo -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_calendar"
+                android:tint="#777777"
+                android:layout_marginEnd="4dp" />
+
+            <TextView
+                android:id="@+id/tvOrderDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày tạo: 2025-07-20"
+                android:textSize="14sp"
+                android:textColor="#777777" />
+        </LinearLayout>
+
+        <!-- Nút cập nhật trạng thái -->
+        <Button
+            android:id="@+id/btnUpdateStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cập nhật trạng thái"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="16dp"
+            android:backgroundTint="#03A9F4"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

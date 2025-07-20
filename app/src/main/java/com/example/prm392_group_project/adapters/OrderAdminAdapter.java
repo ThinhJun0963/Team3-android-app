@@ -9,19 +9,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.prm392_group_project.R;
+import com.example.prm392_group_project.activities.AdminOrderManagementActivity;
 import com.example.prm392_group_project.models.OrderResponseDTO;
 
 import java.util.List;
 
 public class OrderAdminAdapter extends RecyclerView.Adapter<OrderAdminAdapter.OrderViewHolder> {
-    private final List<OrderResponseDTO> orders;
 
-    public OrderAdminAdapter(List<OrderResponseDTO> orders) {
+    private final List<OrderResponseDTO> orders;
+    private final AdminOrderManagementActivity context;
+
+    public OrderAdminAdapter(List<OrderResponseDTO> orders, AdminOrderManagementActivity context) {
         this.orders = orders;
+        this.context = context;
     }
 
     @NonNull
@@ -39,6 +44,20 @@ public class OrderAdminAdapter extends RecyclerView.Adapter<OrderAdminAdapter.Or
         holder.tvOrderStatus.setText("Trạng thái: " + order.getStatus().name());
         holder.tvOrderPrice.setText("Tổng tiền: " + order.getTotalPrice() + "đ");
         holder.tvOrderDate.setText("Ngày tạo: " + order.getCreatedAt().toString().replace("T", " "));
+
+        holder.btnUpdateStatus.setOnClickListener(v -> showStatusDialog(order));
+    }
+
+    private void showStatusDialog(OrderResponseDTO order) {
+        String[] statuses = {"PENDING", "PROCESSING", "COMPLETED", "CANCELLED"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Cập nhật trạng thái đơn #" + order.getId());
+        builder.setItems(statuses, (dialog, which) -> {
+            String selectedStatus = statuses[which];
+            context.updateOrderStatus(order.getId(), selectedStatus);
+        });
+        builder.show();
     }
 
     @Override
@@ -48,6 +67,7 @@ public class OrderAdminAdapter extends RecyclerView.Adapter<OrderAdminAdapter.Or
 
     static class OrderViewHolder extends RecyclerView.ViewHolder {
         TextView tvOrderId, tvOrderUser, tvOrderStatus, tvOrderPrice, tvOrderDate;
+        Button btnUpdateStatus;
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -56,7 +76,9 @@ public class OrderAdminAdapter extends RecyclerView.Adapter<OrderAdminAdapter.Or
             tvOrderStatus = itemView.findViewById(R.id.tvOrderStatus);
             tvOrderPrice = itemView.findViewById(R.id.tvOrderPrice);
             tvOrderDate = itemView.findViewById(R.id.tvOrderDate);
+            btnUpdateStatus = itemView.findViewById(R.id.btnUpdateStatus);
         }
     }
 }
+
 

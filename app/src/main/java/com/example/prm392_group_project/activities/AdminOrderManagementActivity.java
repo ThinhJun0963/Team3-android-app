@@ -13,6 +13,7 @@ import com.example.prm392_group_project.adapters.OrderAdminAdapter;
 import com.example.prm392_group_project.api.AdminOrderApi;
 import com.example.prm392_group_project.api.RetrofitClient;
 import com.example.prm392_group_project.models.OrderResponseDTO;
+import com.example.prm392_group_project.models.UpdateOrderStatusRequestDTO;
 
 import java.util.List;
 
@@ -33,13 +34,9 @@ public class AdminOrderManagementActivity extends AppCompatActivity {
         recyclerOrders = findViewById(R.id.recyclerOrders);
         recyclerOrders.setLayoutManager(new LinearLayoutManager(this));
 
-        // Quay lại AdminDashboard
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(this, AdminDashboardActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
+            finish(); // Quay lại màn hình trước
         });
 
         loadOrders();
@@ -51,7 +48,7 @@ public class AdminOrderManagementActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<OrderResponseDTO>> call, Response<List<OrderResponseDTO>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    orderAdapter = new OrderAdminAdapter(response.body()); // Đảm bảo đúng tên adapter
+                    orderAdapter = new OrderAdminAdapter(response.body(), AdminOrderManagementActivity.this);
                     recyclerOrders.setAdapter(orderAdapter);
                 } else {
                     Toast.makeText(AdminOrderManagementActivity.this, "Không thể tải đơn hàng", Toast.LENGTH_SHORT).show();
@@ -64,4 +61,27 @@ public class AdminOrderManagementActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void updateOrderStatus(long orderId, String status) {
+        AdminOrderApi api = RetrofitClient.getAdminOrderApi(this);
+        UpdateOrderStatusRequestDTO request = new UpdateOrderStatusRequestDTO(status);
+
+        api.updateOrderStatus(orderId, request).enqueue(new Callback<OrderResponseDTO>() {
+            @Override
+            public void onResponse(Call<OrderResponseDTO> call, Response<OrderResponseDTO> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(AdminOrderManagementActivity.this, "Cập nhật trạng thái thành công", Toast.LENGTH_SHORT).show();
+                    loadOrders(); // Refresh
+                } else {
+                    Toast.makeText(AdminOrderManagementActivity.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<OrderResponseDTO> call, Throwable t) {
+                Toast.makeText(AdminOrderManagementActivity.this, "Lỗi: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
+
