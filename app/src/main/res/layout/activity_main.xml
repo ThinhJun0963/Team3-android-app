@@ -1,58 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="?attr/colorSurface"
+    android:background="@drawable/gradient_background"
     tools:context=".activities.MainActivity">
 
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Chào mừng đến với ứng dụng!"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="?attr/colorOnSurface"
-        android:layout_marginBottom="32dp"/>
+        android:background="@drawable/card_background"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnUpdateProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cập nhật Hồ sơ"
-        android:paddingVertical="12dp"
-        android:paddingHorizontal="24dp"
-        android:layout_marginBottom="16dp"
-        app:cornerRadius="12dp"
-        android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="32dp"
+            android:text="Chào mừng đến với ứng dụng!"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnProductList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="12dp"
-        android:text="Xem Sản phẩm"
-        android:textSize="16sp"
-        app:cornerRadius="12dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpdateProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:paddingVertical="12dp"
+            android:text="Cập nhật Hồ sơ"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="16sp"
+            app:backgroundTint="?attr/colorPrimary"
+            app:cornerRadius="12dp"
+            app:rippleColor="?attr/colorPrimaryContainer" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đăng xuất"
-        android:paddingVertical="12dp"
-        android:paddingHorizontal="24dp"
-        app:cornerRadius="12dp"
-        android:textSize="16sp"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:textColor="?attr/colorError"
-        app:strokeColor="?attr/colorError"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpdateAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:paddingVertical="12dp"
+            android:text="Cập nhật Tài khoản"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="16sp"
+            app:backgroundTint="?attr/colorPrimary"
+            app:cornerRadius="12dp"
+            app:rippleColor="?attr/colorPrimaryContainer" />
 
-</LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnProductList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:paddingVertical="12dp"
+            android:text="Xem Sản phẩm"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="16sp"
+            app:backgroundTint="?attr/colorPrimary"
+            app:cornerRadius="12dp"
+            app:rippleColor="?attr/colorPrimaryContainer" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
+            android:text="Đăng xuất"
+            android:textColor="?attr/colorError"
+            android:textSize="16sp"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="12dp"
+            app:rippleColor="?attr/colorErrorContainer"
+            app:strokeColor="?attr/colorError" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

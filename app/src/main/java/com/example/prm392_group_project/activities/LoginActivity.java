@@ -1,4 +1,3 @@
-// app/src/main/java/com/example/prm392_group_project/activities/LoginActivity.java
 package com.example.prm392_group_project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
     private Button btnLogin;
-    private TextView tvRegister, tvForgotPassword;
+    private TextView tvRegister; // Loại bỏ tvForgotPassword
     private TokenManager tokenManager;
 
     @Override
@@ -47,12 +46,11 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         tvRegister = findViewById(R.id.tvRegister);
-        tvForgotPassword = findViewById(R.id.tvForgotPassword);
+        // tvForgotPassword = findViewById(R.id.tvForgotPassword); // Loại bỏ khai báo
 
         btnLogin.setOnClickListener(v -> performLogin());
         tvRegister.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
-        // Hiện tại không có API quên mật khẩu, chỉ hiển thị thông báo
-        tvForgotPassword.setOnClickListener(v -> showSnackbar("Tính năng quên mật khẩu đang được phát triển."));
+        // tvForgotPassword.setOnClickListener(v -> showSnackbar("Tính năng quên mật khẩu đang được phát triển.")); // Loại bỏ sự kiện
     }
 
     private void performLogin() {
@@ -104,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     private String extractRoleFromJwt(String token) {
         try {
             String[] parts = token.split("\\.");
@@ -117,6 +116,7 @@ public class LoginActivity extends AppCompatActivity {
         }
         return null;
     }
+
     private void navigateToMainScreen() {
         String token = tokenManager.getAuthToken();
         String role = extractRoleFromJwt(token);
@@ -132,7 +132,6 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
     private void showSnackbar(String message) {
         Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show();

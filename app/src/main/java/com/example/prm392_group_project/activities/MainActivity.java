@@ -1,4 +1,3 @@
-// app/src/main/java/com/example/prm392_group_project/activities/MainActivity.java
 package com.example.prm392_group_project.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TokenManager tokenManager;
     private TextView tvWelcome;
-    private Button btnLogout, btnUpdateProfile, btnProductList;
+    private Button btnLogout, btnUpdateProfile, btnProductList, btnUpdateAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +28,9 @@ public class MainActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.btnLogout);
         btnUpdateProfile = findViewById(R.id.btnUpdateProfile);
         btnProductList = findViewById(R.id.btnProductList);
+        btnUpdateAccount = findViewById(R.id.btnUpdateAccount);
 
-        // Hiển thị thông tin người dùng
         if (tokenManager.isLoggedIn()) {
-            // userId không còn được lưu trực tiếp từ response login
-            // Nếu cần hiển thị thông tin người dùng, bạn sẽ phải giải mã JWT
-            // hoặc gọi một API khác để lấy thông tin profile của người dùng.
             tvWelcome.setText("Chào mừng, bạn đã đăng nhập!");
         } else {
             tvWelcome.setText("Bạn chưa đăng nhập.");
@@ -42,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogout.setOnClickListener(v -> performLogout());
         btnUpdateProfile.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, UpdateProfileActivity.class)));
+        btnUpdateAccount.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, UpdateProfileActivity.class)));
         btnProductList.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ProductListActivity.class);
             startActivity(intent);
@@ -49,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void performLogout() {
-        // Xóa token khỏi client-side
         tokenManager.deleteTokens();
         showSnackbar("Đăng xuất thành công!");
         navigateToLoginScreen();

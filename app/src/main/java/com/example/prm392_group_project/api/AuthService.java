@@ -29,4 +29,6 @@ public interface AuthService {
 
     @PATCH("/auth/update-profile")
     Call<ResponseMessage<String>> updateProfile(@Body UpdateProfileRequest updateProfileRequest);
+
+
 }
