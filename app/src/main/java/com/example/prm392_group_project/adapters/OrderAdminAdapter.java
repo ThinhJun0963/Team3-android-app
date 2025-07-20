@@ -49,7 +49,7 @@ public class OrderAdminAdapter extends RecyclerView.Adapter<OrderAdminAdapter.Or
     }
 
     private void showStatusDialog(OrderResponseDTO order) {
-        String[] statuses = {"PENDING", "PROCESSING", "COMPLETED", "CANCELLED"};
+        String[] statuses = {"PENDING", "PREPARING", "DELIVERING", "COMPLETED", "FAILED", "CANCELLED"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Cập nhật trạng thái đơn #" + order.getId());
