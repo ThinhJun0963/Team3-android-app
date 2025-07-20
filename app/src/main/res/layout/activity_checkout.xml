@@ -100,8 +100,6 @@
             android:backgroundTint="#4CAF50"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
-        <include layout="@layout/view_bottom_nav" />
-
     </LinearLayout>
 </ScrollView>
 
