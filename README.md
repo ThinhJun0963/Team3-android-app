@@ -32,7 +32,7 @@
 
 \- \*\*IDE:\*\* Android Studio
 
-\- \*\*Cơ sở dữ liệu:\*\* Firebase Realtime Database 
+\- \*\*Cơ sở dữ liệu:\*\* Firebase Realtime Database
 
 \- \*\*Thư viện hỗ trợ:\*\* Glide, Retrofit, Firebase Auth, RecyclerView,...
 
@@ -46,17 +46,23 @@
 
 
 
+\## Slide giới thiệu app
+
+https://www.canva.com/design/DAGtr64uDbA/KC98oyziWb09KRPQ0LYJ5g/edit?utm\_content=DAGtr64uDbA\&utm\_campaign=designshare\&utm\_medium=link2\&utm\_source=sharebutton
+
+
+
 \## Cài đặt \& Chạy ứng dụng
 
 
 
 1\. Clone dự án:
 
-&nbsp;   ```bash
+    ```bash
 
-&nbsp;   git clone https://github.com/ThinhJun0963/Team3-android-app.git
+    git clone https://github.com/ThinhJun0963/Team3-android-app.git
 
-&nbsp;   ```
+    ```
 
 2\. Mở bằng \*\*Android Studio\*\*
 
@@ -69,8 +75,4 @@
 \## 📖 License
 
 Dự án thuộc sở hữu học thuật của nhóm Team 3 – PRM392. Không sử dụng vào mục đích thương mại.
-
-
-
-
 
